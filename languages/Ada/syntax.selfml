@@ -6,18 +6,18 @@
                 (2 entity.name.function.ada))))
     (zone meta.function.ada
         (match
-            (regex [\b(?i:(package)(?:\b\s+(body))?)\b\s+(\w+(\.\w+)?|"(?:\+|-|=|\*|/)")]
+            (regex [\b(?i:(package)(?:\b\s+(body))?)\b\s+(\w+(\.\w+)*|"(?:\+|-|=|\*|/)")]
                 (3 entity.name.type.package.ada)
                 (1 storage.type.package.ada)
                 (2 keyword.other.body.ada))))
     (zone meta.function.ada
         (match
-            (regex [\b(?i:(end))\b\s+(\w+(\.\w+)?|"(\+|-|=|\*|/)")\s?;]
+            (regex [\b(?i:(end))\b\s+(\w+(\.\w+)*|"(\+|-|=|\*|/)")\s?;]
                 (1 storage.type.function.ada)
                 (2 entity.name.function.ada))))
     (zone meta.function.ada
         (match
-            (regex [\b(?i:(with|use))\b\s+(\w+(\.\w+)?)\s?;]
+            (regex [(^|[\r\n])((?i:((limited[ \t]*)?(private[ \t]*)?with))[ \t]+(\w+(\.\w+)*);[ \t]*)+]
                 (1 keyword.control.import.ada)
                 (2 string.unquoted.import.ada))))
     (zone keyword.control.ada
@@ -25,10 +25,10 @@
             (regex [\b(?i:(begin|end|package))\b])))
     (zone keyword.other.ada
         (match
-            (regex [\b(?i:(\=>|abort|else|new|return|abs|elsif|not|reverse|abstract|null|accept|entry|select|access|exception|of|separate|aliased|exit|or|subtype|all|others|and|for|out|tagged|array|function|task|at|terminate|generic|pragma|then|goto|private|type|body|procedure|if|protected|until|case|in|use|constant|is|raise|range|when|declare|limited|record|while|delay|loop|rem|with|delta|renames|digits|mod|requeue|xor|do))\b])))
+            (regex [\b(?i:(\=>|abort|abs|abstract|accept|access|aliased|all|and|array|at|body|case|constant|declare|delay|delta|digits|do|else|elsif|entry|exception|exit|for|function|generic|goto|if|in|interface|is|limited|loop|mod|new|not|null|of|or|others|out|overriding|pragma|private|procedure|protected|raise|range|record|rem|renames|requeue|return|reverse|select|separate|some|subtype|synchronized|tagged|task|terminate|then|type|until|use|when|while|with|xor))\b])))
     (zone constant.numeric.ada
         (match
-            (regex [\b((0(x|X)[0-9a-fA-F_]*)|(([0-9_]+\.?[0-9_]*)|(\.[0-9_]+))((e|E)(\+|-)?[0-9_]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b])))
+            (regex [\b(?i:([0-9](_?[0-9])*((#[0-9a-f](_?[0-9a-f])*#((e(\+|-)?[0-9](_?[0-9])*\b)|\B))|((\.[0-9](_?[0-9])*)?(e(\+|-)?[0-9](_?[0-9])*)?\b))))])))
     (zone string.quoted.double.ada
         (start
             (regex "
