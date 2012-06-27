@@ -13,4 +13,4 @@
 
 (indentation.decrease \bend\b)
 
-(indentation.increase [\b(?i:(loop|declare|begin|exception|when|is|if|else|task))\b])
+(indentation.increase [\b(?i:(loop|declare|begin|exception|when|is[^;]*$|if|else|task))\b])
