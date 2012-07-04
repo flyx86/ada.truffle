@@ -11,6 +11,6 @@
 
 (comment.line [-- ])
 
-(indentation.decrease \bend\b)
+(indentation.decrease [\b(begin|end)\b])
 
-(indentation.increase [\b(?i:(loop|declare|begin|exception|when|is[^;]*$|if|else|task))\b])
+(indentation.increase [\b(?i:(loop|declare|begin|exception|when|is[^;]*$|then|else|task))\b])
